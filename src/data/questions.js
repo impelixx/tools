@@ -1,74 +1,339 @@
-export const questions = [
-  // Theory questions
+export const allQuestions = [
   {
     category: 'theory',
     question: 'Что такое процесс в Linux?',
     options: [
-      'Запущенная программа с уникальным идентификатором (PID)',
-      'Файл на диске, готовый к запуску',
-      'Команда в терминале',
-      'Системный вызов ядра'
+      'Запущенная программа',
+      'Файл на диске',
+      'Папка в системе',
+      'Команда в терминале'
+    ],
+    correct: 0
+  },
+  {
+    category: 'definition',
+    question: 'Процесс - это...',
+    options: [
+      'Выполняющаяся программа с собственным адресным пространством и ресурсами',
+      'Файл на диске, содержащий программный код',
+      'Команда, которую вводит пользователь в терминале',
+      'Служба, которая работает только на сервере'
     ],
     correct: 0
   },
   {
     category: 'theory',
-    question: 'Какая команда показывает все процессы всех пользователей?',
+    question: 'Что такое PID?',
+    options: [
+      'Имя процесса',
+      'Числовой идентификатор процесса',
+      'Статус процесса',
+      'Приоритет процесса'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'PID (Process ID) - это...',
+    options: [
+      'Пароль для доступа к процессу',
+      'Уникальный номер, который система присваивает каждому процессу',
+      'Приоритет исполнения процесса',
+      'Статус выполнения процесса'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'PPID (Parent Process ID) - это...',
+    options: [
+      'Идентификатор основного процесса',
+      'Идентификатор родительского (главного) процесса',
+      'Параллельный идентификатор процесса',
+      'Постоянный идентификатор процесса'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает буква R в колонке STAT команды ps?',
+    options: [
+      'Процесс остановлен',
+      'Процесс запущен и выполняется',
+      'Процесс удаляется',
+      'Процесс ждет'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает буква S в колонке STAT команды ps?',
+    options: [
+      'Процесс работает',
+      'Процесс приостановлен (sleeping)',
+      'Процесс заблокирован',
+      'Процесс завершен'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Фоновый процесс - это...',
+    options: [
+      'Процесс, который выполняется скрытно и не занимает терминал',
+      'Процесс, который работает медленнее других',
+      'Процесс, запущенный от пользователя без прав администратора',
+      'Процесс, который загружается при старте системы'
+    ],
+    correct: 0
+  },
+  {
+    category: 'definition',
+    question: 'Сигнал в Linux - это...',
+    options: [
+      'Сообщение об ошибке',
+      'Способ внутрипроцессного взаимодействия',
+      'Посылаемое процессу уведомление о событии (команда завершения, перезагрузки, паузы)',
+      'Файл, содержащий команды для процесса'
+    ],
+    correct: 2
+  },
+  {
+    category: 'practice',
+    question: 'Какая команда показывает все процессы?',
     options: [
       'ps',
-      'ps -e',
       'ps aux',
-      'top -a'
+      'top',
+      'б и в'
+    ],
+    correct: 3
+  },
+  {
+    category: 'practice',
+    question: 'Какая колонка в ps aux показывает использование памяти?',
+    options: [
+      '%CPU',
+      '%MEM',
+      'VSZ',
+      'RSS'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Что означает VSZ в ps aux?',
+    options: [
+      'Физическая память в КБ',
+      'Виртуальная память в КБ',
+      'Видимый размер',
+      'Версия'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Какую клавишу нажать в top для сортировки по памяти?',
+    options: [
+      'P',
+      'C',
+      'M',
+      'S'
+    ],
+    correct: 2
+  },
+  {
+    category: 'practice',
+    question: 'Как завершить процесс мягко (TERM)?',
+    options: [
+      'kill -9 12345',
+      'kill -15 12345',
+      'kill 12345',
+      'б и в'
+    ],
+    correct: 3
+  },
+  {
+    category: 'practice',
+    question: 'Как завершить процесс принудительно (KILL)?',
+    options: [
+      'kill 12345',
+      'kill -15 12345',
+      'kill -9 12345',
+      'killall 12345'
+    ],
+    correct: 2
+  },
+
+  {
+    category: 'theory',
+    question: 'Что такое пакет в Linux?',
+    options: [
+      'Папка с файлами',
+      'Набор команд и зависимостей для установки ПО',
+      'Архив с программой',
+      'Скрипт для установки'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Пакет в Linux - это...',
+    options: [
+      'Папка на жестком диске',
+      'Архив с программой, её файлами, конфигурацией и метаинформацией',
+      'Команда для установки программы',
+      'Репозиторий с исходным кодом'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что такое зависимость пакета?',
+    options: [
+      'Файл конфигурации',
+      'Другой пакет, который нужен для работы',
+      'Версия пакета',
+      'Размер пакета'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Зависимость пакета - это...',
+    options: [
+      'Версия пакета',
+      'Размер пакета в байтах',
+      'Другой пакет или библиотека, необходимая для работы данного пакета',
+      'Статус установки пакета'
     ],
     correct: 2
   },
   {
     category: 'theory',
-    question: 'Какой сигнал используется для принудительного завершения процесса?',
-    options: [
-      'TERM (15)',
-      'KILL (9)',
-      'STOP (19)',
-      'HUP (1)'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что такое зависимость в контексте пакетов Linux?',
-    options: [
-      'Файл конфигурации пакета',
-      'Другой пакет, который необходим для работы данного пакета',
-      'Репозиторий, где хранится пакет',
-      'Версия пакета'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какой формат пакетов используется в Debian и Ubuntu?',
+    question: 'Какой формат пакетов в Debian/Ubuntu?',
     options: [
       '.rpm',
-      '.apk',
       '.deb',
-      '.pkg'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Что такое MBR и каков его размер?',
-    options: [
-      'Главная загрузочная запись, 1024 байта',
-      'Главная загрузочная запись, 512 байт',
-      'Таблица разделов, 256 байт',
-      'Загрузчик GRUB, 2048 байт'
+      '.apk',
+      '.tar.gz'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Сколько первичных разделов максимум поддерживает MBR?',
+    question: 'Какой пакетный менеджер используется в Ubuntu?',
+    options: [
+      'YUM',
+      'APT',
+      'DNF',
+      'Pacman'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Репозиторий - это...',
+    options: [
+      'Хранилище с отчётами об ошибках',
+      'Место в интернете или локально, где хранятся пакеты для скачивания',
+      'Программа для управления пакетами',
+      'Папка на компьютере с установленными программами'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Пакетный менеджер - это...',
+    options: [
+      'Человек, управляющий пакетами на сервере',
+      'Программа, которая автоматически решает зависимости и управляет установкой/удалением пакетов',
+      'Файл, где хранится список установленных пакетов',
+      'Сервис для закачки файлов из интернета'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как обновить список пакетов в Ubuntu?',
+    options: [
+      'sudo apt upgrade',
+      'sudo apt update',
+      'sudo apt refresh',
+      'sudo apt sync'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как установить пакет nginx в Ubuntu?',
+    options: [
+      'apt install nginx',
+      'sudo apt install nginx',
+      'sudo apt get nginx',
+      'install nginx'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как удалить пакет nginx?',
+    options: [
+      'apt delete nginx',
+      'sudo apt remove nginx',
+      'sudo apt uninstall nginx',
+      'remove nginx'
+    ],
+    correct: 1
+  },
+  
+  {
+    category: 'theory',
+    question: 'Что такое раздел (partition)?',
+    options: [
+      'Папка на жестком диске',
+      'Часть жесткого диска',
+      'Тип файловой системы',
+      'Место для сохранения файлов'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Раздел диска (partition) - это...',
+    options: [
+      'Папка на жестком диске',
+      'Логически выделенная часть жесткого диска, на которую можно установить ОС или хранить данные',
+      'Файл, содержащий данные',
+      'Тип файловой системы'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что такое MBR?',
+    options: [
+      'Главный файл, содержащий информацию о памяти',
+      'Первые 512 байт диска с информацией о разделах',
+      'Тип файловой системы для больших дисков',
+      'Резервная копия системы'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'MBR (Master Boot Record) - это...',
+    options: [
+      'Главный файл, содержащий информацию о памяти',
+      'Первые 512 байт диска, содержащие информацию о разделах и загрузчик ОС',
+      'Тип файловой системы для больших дисков',
+      'Резервная копия системы'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Сколько первичных разделов поддерживает MBR?',
     options: [
       '2',
       '4',
@@ -79,255 +344,100 @@ export const questions = [
   },
   {
     category: 'theory',
-    question: 'Какое преимущество GPT над MBR?',
+    question: 'Какой максимальный размер диска для MBR?',
     options: [
-      'Быстрее загружается',
-      'Поддерживает до 128 разделов по умолчанию',
-      'Занимает меньше места',
-      'Проще в настройке'
+      '1 ТБ',
+      '2,2 ТБ',
+      '4 ТБ',
+      '8 ТБ'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Что содержит файл /etc/fstab?',
+    question: 'Что такое GPT?',
     options: [
-      'Список установленных пакетов',
-      'Информацию о пользователях',
-      'Описание монтируемых файловых систем',
-      'Конфигурацию сети'
+      'Тип файловой системы',
+      'Современный стандарт разметки дисков',
+      'Команда для форматирования',
+      'Загрузчик ОС'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'GPT (GUID Partition Table) - это...',
+    options: [
+      'Пароль для защиты диска',
+      'Программа для работы с дисками',
+      'Современный стандарт разметки дисков, поддерживающий до 128 разделов и диски больше 2 ТБ',
+      'Тип файлов в Linux'
     ],
     correct: 2
   },
   {
     category: 'theory',
-    question: 'Что позволяет делать команда sudo?',
+    question: 'Сколько разделов максимум поддерживает GPT?',
     options: [
-      'Переключаться между пользователями',
-      'Выполнять команды с правами другого пользователя (обычно root)',
-      'Создавать новых пользователей',
-      'Изменять пароли'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какая команда используется для безопасного редактирования /etc/sudoers?',
-    options: [
-      'nano /etc/sudoers',
-      'vim /etc/sudoers',
-      'visudo',
-      'edit sudoers'
+      '4',
+      '16',
+      '128',
+      'Неограниченно'
     ],
     correct: 2
   },
   {
-    category: 'theory',
-    question: 'Что означает право доступа 755 в восьмеричной системе?',
+    category: 'definition',
+    question: 'Точка монтирования - это...',
     options: [
-      'rwxr-xr-x',
-      'rwxrwxrwx',
-      'rw-r--r--',
-      'r-xr-xr-x'
-    ],
-    correct: 0
-  },
-  {
-    category: 'theory',
-    question: 'Что такое STDIN?',
-    options: [
-      'Стандартный поток ошибок',
-      'Стандартный поток вывода',
-      'Стандартный поток ввода',
-      'Системный поток данных'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Какой файловый дескриптор соответствует STDERR?',
-    options: [
-      '0',
-      '1',
-      '2',
-      '3'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Что делает /dev/null?',
-    options: [
-      'Генерирует случайные числа',
-      'Сохраняет данные в файл',
-      'Отбрасывает все записанные в него данные',
-      'Создает пустой файл'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Что происходит первым при загрузке Linux?',
-    options: [
-      'Запускается init процесс',
-      'BIOS загружает и запускает загрузчик',
-      'Монтируется корневая файловая система',
-      'Инициализируются драйверы'
+      'Место, где хранятся файлы операционной системы',
+      'Директория, к которой присоединяется раздел диска или файловая система',
+      'Команда для подключения диска',
+      'Тип файловой системы'
     ],
     correct: 1
   },
   {
-    category: 'theory',
-    question: 'Какой PID имеет процесс init/systemd?',
+    category: 'definition',
+    question: 'Монтирование - это...',
     options: [
-      '0',
-      '1',
-      '2',
-      '10'
+      'Копирование данных на диск',
+      'Процесс присоединения раздела диска или файловой системы к определённой папке в системе',
+      'Процесс форматирования диска',
+      'Процесс проверки целостности файлов'
     ],
     correct: 1
   },
   {
-    category: 'theory',
-    question: 'Что означает shebang #!/bin/bash в начале скрипта?',
+    category: 'definition',
+    question: 'fstab файл - это...',
     options: [
-      'Комментарий для программиста',
-      'Указывает интерпретатор для выполнения скрипта',
-      'Устанавливает права доступа',
-      'Задает переменные окружения'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какая переменная в bash хранит количество аргументов скрипта?',
-    options: [
-      '$@',
-      '$*',
-      '$#',
-      '$?'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Что такое systemd?',
-    options: [
-      'Файловая система',
-      'Менеджер систем и служб для Linux',
-      'Командная оболочка',
-      'Пакетный менеджер'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какой тип unit в systemd запускает и контролирует процесс?',
-    options: [
-      '.target',
-      '.socket',
-      '.service',
-      '.timer'
-    ],
-    correct: 2
-  },
-  {
-    category: 'theory',
-    question: 'Какая команда показывает логи systemd в реальном времени?',
-    options: [
-      'journalctl',
-      'journalctl -f',
-      'journalctl -b',
-      'systemctl logs'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что означает SUID бит (4000)?',
-    options: [
-      'Файл выполняется с правами владельца',
-      'Файл выполняется с правами группы',
-      'Только владелец может удалить файл',
-      'Файл доступен только для чтения'
-    ],
-    correct: 0
-  },
-  {
-    category: 'theory',
-    question: 'Какой файл содержит хэши паролей пользователей?',
-    options: [
-      '/etc/passwd',
-      '/etc/shadow',
-      '/etc/group',
-      '/etc/sudoers'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что означает опция -R в команде chmod?',
-    options: [
-      'Read only',
-      'Рекурсивное применение к директориям',
-      'Remove permissions',
-      'Reset to defaults'
-    ],
-    correct: 1
-  },
-  // Practice questions
-  {
-    category: 'practice',
-    question: 'Как перенаправить stdout в файл с перезаписью?',
-    options: [
-      'command > file.txt',
-      'command >> file.txt',
-      'command < file.txt',
-      'command 2> file.txt'
-    ],
-    correct: 0
-  },
-  {
-    category: 'practice',
-    question: 'Как перенаправить stderr в файл?',
-    options: [
-      'command > file.txt',
-      'command 1> file.txt',
-      'command 2> file.txt',
-      'command &> file.txt'
+      'Конфигурационный файл для пользователей',
+      'Архив с резервной копией',
+      'Файл (/etc/fstab), содержащий информацию о всех монтируемых при загрузке файловых системах',
+      'База данных установленных программ'
     ],
     correct: 2
   },
   {
     category: 'practice',
-    question: 'Как объединить stdout и stderr и перенаправить в файл?',
+    question: 'Как смонтировать раздел /dev/sdb1 в папку /mnt/data?',
     options: [
-      'command > file.txt',
-      'command 2>&1 > file.txt',
-      'command &> file.txt',
-      'command | tee file.txt'
-    ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как установить пакет nginx в Ubuntu?',
-    options: [
-      'apt install nginx',
-      'sudo apt install nginx',
-      'dnf install nginx',
-      'rpm -i nginx'
+      'mount /mnt/data /dev/sdb1',
+      'mount /dev/sdb1 /mnt/data',
+      'mount -t /dev/sdb1 /mnt/data',
+      'mount /dev/sdb1 -to /mnt/data'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Какая команда обновляет списки пакетов в Debian/Ubuntu?',
+    question: 'Как размонтировать файловую систему?',
     options: [
-      'sudo apt upgrade',
-      'sudo apt update',
-      'sudo apt refresh',
-      'sudo apt fetch'
+      'unmount /mnt/data',
+      'umount /mnt/data',
+      'mount -u /mnt/data',
+      'remove-mount /mnt/data'
     ],
     correct: 1
   },
@@ -344,124 +454,491 @@ export const questions = [
   },
   {
     category: 'practice',
-    question: 'Как смонтировать раздел /dev/sdb1 в /mnt/data?',
+    question: 'Какой файл содержит информацию о монтируемых ФС?',
     options: [
-      'mount /mnt/data /dev/sdb1',
-      'mount /dev/sdb1 /mnt/data',
-      'mount -t /dev/sdb1 /mnt/data',
-      'attach /dev/sdb1 /mnt/data'
+      '/etc/mount',
+      '/etc/fstab',
+      '/etc/filesystem',
+      '/etc/partitions'
+    ],
+    correct: 1
+  },
+  
+  {
+    category: 'theory',
+    question: 'Что такое sudo?',
+    options: [
+      'Команда для входа в систему',
+      'Пароль администратора',
+      'Выполнение команд с правами другого пользователя',
+      'Удаление прав доступа'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'sudo - это...',
+    options: [
+      'Сокращение от слова "super user do"',
+      'Команда, позволяющая выполнять другие команды с правами другого пользователя (обычно root)',
+      'Пароль администратора',
+      'Права доступа для файлов'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Root пользователь - это...',
+    options: [
+      'Первый зарегистрированный пользователь',
+      'Администратор системы с наивысшими привилегиями (UID 0)',
+      'Пользователь для резервной копии',
+      'Пользователь, который не может удалять файлы'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Какой файл содержит хэши паролей?',
+    options: [
+      '/etc/passwd',
+      '/etc/shadow',
+      '/etc/password',
+      '/etc/users'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Какой файл содержит информацию о пользователях?',
+    options: [
+      '/etc/shadow',
+      '/etc/users',
+      '/etc/passwd',
+      '/etc/accounts'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'UID (User ID) - это...',
+    options: [
+      'Пароль пользователя',
+      'Название пользователя',
+      'Уникальный номер, который система присваивает каждому пользователю',
+      'Статус доступа пользователя'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'Группа в Linux - это...',
+    options: [
+      'Несколько пользователей, сидящих за одним компьютером',
+      'Набор прав для одного пользователя',
+      'Логическое объединение пользователей для управления правами доступа к ресурсам',
+      'Папка, содержащая файлы пользователей'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'GID (Group ID) - это...',
+    options: [
+      'Пароль группы',
+      'Уникальный номер группы в системе',
+      'Имя администратора группы',
+      'Количество пользователей в группе'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как показать список файлов с размерами в человекочитаемом формате?',
+    question: 'Как создать пользователя user1?',
     options: [
-      'ls -l',
-      'ls -a',
-      'ls -lh',
-      'ls -s'
-    ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как сделать скрипт исполняемым для владельца?',
-    options: [
-      'chmod +x script.sh',
-      'chmod 777 script.sh',
-      'chown +x script.sh',
-      'exec script.sh'
-    ],
-    correct: 0
-  },
-  {
-    category: 'practice',
-    question: 'Как изменить владельца файла на user и группу на group?',
-    options: [
-      'chown user file.txt && chgrp group file.txt',
-      'chown user:group file.txt',
-      'chmod user:group file.txt',
-      'usermod user:group file.txt'
+      'addser user1',
+      'useradd user1',
+      'newuser user1',
+      'createuser user1'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как запустить сервис nginx через systemd?',
+    question: 'Как установить пароль пользователю user1?',
     options: [
-      'systemctl nginx start',
-      'service nginx start',
-      'sudo systemctl start nginx',
-      'start nginx'
-    ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как включить автозапуск сервиса при загрузке системы?',
-    options: [
-      'systemctl autostart nginx',
-      'systemctl enable nginx',
-      'systemctl boot nginx',
-      'systemctl activate nginx'
+      'set passwd user1',
+      'passwd user1',
+      'password user1',
+      'setpass user1'
     ],
     correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как посмотреть статус сервиса nginx?',
-    options: [
-      'systemctl nginx',
-      'systemctl show nginx',
-      'systemctl status nginx',
-      'systemctl info nginx'
-    ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как создать пользователя с домашней директорией и оболочкой bash?',
-    options: [
-      'useradd username',
-      'useradd -m username',
-      'useradd -m -s /bin/bash username',
-      'adduser username /bin/bash'
-    ],
-    correct: 2
   },
   {
     category: 'practice',
     question: 'Как добавить пользователя в группу sudo?',
     options: [
-      'usermod -G sudo username',
-      'usermod -aG sudo username',
-      'addgroup username sudo',
-      'gpasswd -a username sudo'
+      'usermod -G sudo user1',
+      'usermod -aG sudo user1',
+      'addgroup user1 sudo',
+      'gpasswd user1 sudo'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как найти UUID раздела для добавления в fstab?',
+    question: 'Какой инструмент всегда использовать для редактирования sudoers?',
     options: [
-      'lsblk -f',
-      'blkid /dev/sdb1',
-      'fdisk -l',
-      'mount | grep uuid'
-    ],
-    correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как подавить весь вывод команды (stdout и stderr)?',
-    options: [
-      'command > /dev/null',
-      'command 2> /dev/null',
-      'command &> /dev/null',
-      'command | tee /dev/null'
+      'nano /etc/sudoers',
+      'vim /etc/sudoers',
+      'visudo',
+      'edit sudoers'
     ],
     correct: 2
+  },
+
+  {
+    category: 'theory',
+    question: 'Что означает r в правах доступа?',
+    options: [
+      'write (запись)',
+      'read (чтение)',
+      'run (выполнение)',
+      'remove (удаление)'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Право "read" (r) - это...',
+    options: [
+      'Возможность запустить файл',
+      'Возможность изменить содержимое файла',
+      'Возможность прочитать содержимое файла или просмотреть содержимое папки',
+      'Возможность удалить файл'
+    ],
+    correct: 2
+  },
+  {
+    category: 'theory',
+    question: 'Что означает w в правах доступа?',
+    options: [
+      'read (чтение)',
+      'write (запись)',
+      'execute (выполнение)',
+      'view (просмотр)'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Право "write" (w) - это...',
+    options: [
+      'Возможность просмотреть файл',
+      'Возможность изменить или удалить содержимое файла или добавить файлы в папку',
+      'Возможность запустить файл',
+      'Возможность скопировать файл'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает x в правах доступа?',
+    options: [
+      'read (чтение)',
+      'write (запись)',
+      'execute (выполнение)',
+      'example (пример)'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'Право "execute" (x) - это...',
+    options: [
+      'Возможность прочитать файл',
+      'Возможность переименовать файл',
+      'Возможность запустить файл как программу или войти в папку',
+      'Возможность изменить размер файла'
+    ],
+    correct: 2
+  },
+  {
+    category: 'theory',
+    question: 'Какое значение у r в восьмеричной системе?',
+    options: [
+      '1',
+      '2',
+      '4',
+      '8'
+    ],
+    correct: 2
+  },
+  {
+    category: 'theory',
+    question: 'Какое значение у w в восьмеричной системе?',
+    options: [
+      '1',
+      '2',
+      '4',
+      '8'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Какое значение у x в восьмеричной системе?',
+    options: [
+      '1',
+      '2',
+      '4',
+      '8'
+    ],
+    correct: 0
+  },
+  {
+    category: 'definition',
+    question: 'Восьмеричные права доступа - это...',
+    options: [
+      'Пароли для файлов',
+      'Числовая система представления прав доступа (r=4, w=2, x=1)',
+      'Имена групп в системе',
+      'Типы файловых систем'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает право 755?',
+    options: [
+      'rw-r--r--',
+      'rwxr-xr-x',
+      'rwx------',
+      'rw-rw-rw-'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает право 644?',
+    options: [
+      'rwxr-xr-x',
+      'rw-r--r--',
+      'rwx------',
+      'rw-rw-rw-'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'SUID бит - это...',
+    options: [
+      'Защита от удаления файла',
+      'Специальный бит, позволяющий выполнить файл с правами его владельца',
+      'Возможность менять имя файла',
+      'Защита от чтения файла'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Sticky bit - это...',
+    options: [
+      'Возможность быстрого выполнения файла',
+      'Специальный бит, позволяющий только владельцу файла его удалить (обычно на временных папках)',
+      'Защита от изменения прав доступа',
+      'Отметка на активном файле'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как сделать скрипт исполняемым?',
+    options: [
+      'chmod 755 script.sh',
+      'chmod +x script.sh',
+      'chmod a+x script.sh',
+      'Все перечисленные'
+    ],
+    correct: 3
+  },
+  {
+    category: 'practice',
+    question: 'Как установить права 644 на файл?',
+    options: [
+      'chmod 644 file.txt',
+      'chmod rw-r--r-- file.txt',
+      'chmod a+r file.txt',
+      'а и б'
+    ],
+    correct: 0
+  },
+  {
+    category: 'practice',
+    question: 'Как изменить владельца файла на user1?',
+    options: [
+      'chown user1 file.txt',
+      'sudo chown user1 file.txt',
+      'owner user1 file.txt',
+      'а и б'
+    ],
+    correct: 3
+  },
+  {
+    category: 'practice',
+    question: 'Как изменить владельца и группу файла?',
+    options: [
+      'chown user1 && chgrp group1 file.txt',
+      'chown user1:group1 file.txt',
+      'chmod user1:group1 file.txt',
+      'usermod user1:group1 file.txt'
+    ],
+    correct: 1
+  },
+
+  
+  {
+    category: 'theory',
+    question: 'Какой номер у STDIN?',
+    options: [
+      '0',
+      '1',
+      '2',
+      '3'
+    ],
+    correct: 0
+  },
+  {
+    category: 'definition',
+    question: 'STDIN - это...',
+    options: [
+      'Стандартный поток ошибок',
+      'Стандартный поток вывода результатов',
+      'Стандартный поток ввода (обычно клавиатура)',
+      'Стандартный системный файл'
+    ],
+    correct: 2
+  },
+  {
+    category: 'theory',
+    question: 'Какой номер у STDOUT?',
+    options: [
+      '0',
+      '1',
+      '2',
+      '3'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'STDOUT - это...',
+    options: [
+      'Стандартный поток ввода',
+      'Стандартный поток вывода результатов программы (обычно экран)',
+      'Стандартный поток ошибок',
+      'Стандартный файл конфигурации'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Какой номер у STDERR?',
+    options: [
+      '0',
+      '1',
+      '2',
+      '3'
+    ],
+    correct: 2
+  },
+  {
+    category: 'definition',
+    question: 'STDERR - это...',
+    options: [
+      'Стандартный поток ввода',
+      'Стандартный поток вывода',
+      'Стандартный поток для вывода сообщений об ошибках',
+      'Системный файл с ошибками'
+    ],
+    correct: 2
+  },
+  {
+    category: 'theory',
+    question: 'Что делает /dev/null?',
+    options: [
+      'Генерирует данные',
+      'Отбрасывает всё, что туда попадает',
+      'Сохраняет данные',
+      'Выводит ошибки'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: '/dev/null - это...',
+    options: [
+      'Папка для нулевых файлов',
+      'Специальный файл, который игнорирует всё, что в него писать',
+      'Команда для очистки памяти',
+      'Резервная копия системы'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Перенаправление потоков - это...',
+    options: [
+      'Переименование файлов',
+      'Процесс изменения, где программа отправляет свой вывод (в файл вместо экрана и т.д.)',
+      'Создание резервной копии',
+      'Изменение прав доступа'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Pipe (|) - это...',
+    options: [
+      'Символ перенаправления в файл',
+      'Символ для комментариев в коде',
+      'Механизм, передающий вывод одной команды на вход другой',
+      'Символ для обозначения математического модуля'
+    ],
+    correct: 2
+  },
+  {
+    category: 'practice',
+    question: 'Как перенаправить stdout в файл?',
+    options: [
+      'command < file.txt',
+      'command > file.txt',
+      'command >> file.txt',
+      'б и в'
+    ],
+    correct: 3
+  },
+  {
+    category: 'practice',
+    question: 'Как перенаправить stderr в файл?',
+    options: [
+      'command > file.txt',
+      'command 1> file.txt',
+      'command 2> file.txt',
+      'command &> file.txt'
+    ],
+    correct: 2
+  },
+  {
+    category: 'practice',
+    question: 'Как перенаправить и stdout и stderr в файл?',
+    options: [
+      'command > file.txt',
+      'command 2>&1 > file.txt',
+      'command &> file.txt',
+      'б и в'
+    ],
+    correct: 3
   },
   {
     category: 'practice',
@@ -476,62 +953,108 @@ export const questions = [
   },
   {
     category: 'practice',
-    question: 'Как добавить задачу в crontab для ежедневного запуска скрипта в 2:00?',
+    question: 'Что делает команда tee?',
     options: [
-      '0 2 * * * /path/script.sh',
-      '2 0 * * * /path/script.sh',
-      '* 2 * * * /path/script.sh',
-      '0 2 1 * * /path/script.sh'
+      'Выводит данные в stdout',
+      'Выводит в stdout и одновременно сохраняет в файл',
+      'Сохраняет данные в файл',
+      'Удаляет данные'
     ],
-    correct: 0
+    correct: 1
+  },
+
+  
+  {
+    category: 'definition',
+    question: 'Bash скрипт - это...',
+    options: [
+      'Образец текстового файла',
+      'Текстовый файл, содержащий последовательность команд bash для выполнения',
+      'Папка с программами',
+      'Конфигурационный файл системы'
+    ],
+    correct: 1
   },
   {
-    category: 'practice',
-    question: 'Как посмотреть последние 50 строк логов systemd?',
+    category: 'theory',
+    question: 'Что такое shebang?',
     options: [
-      'journalctl -n 50',
-      'journalctl --lines=50',
-      'journalctl -last 50',
-      'journalctl -tail 50'
+      'Комментарий',
+      'Строка для указания интерпретатора',
+      'Команда для выполнения',
+      'Переменная окружения'
     ],
-    correct: 0
+    correct: 1
   },
   {
-    category: 'practice',
-    question: 'Как установить права 644 на файл?',
+    category: 'definition',
+    question: 'Shebang (#!) - это...',
     options: [
-      'chmod 644 file.txt',
-      'chmod rw-r--r-- file.txt',
-      'chown 644 file.txt',
-      'setperm 644 file.txt'
+      'Комментарий в коде',
+      'Строка, указывающая какой интерпретатор использовать для выполнения скрипта',
+      'Команда для запуска скрипта',
+      'Защита от редактирования файла'
     ],
-    correct: 0
+    correct: 1
   },
   {
-    category: 'practice',
-    question: 'Как удалить процесс с PID 1234 принудительно?',
+    category: 'theory',
+    question: 'Что означает переменная $0?',
     options: [
-      'kill 1234',
-      'kill -15 1234',
-      'kill -9 1234',
-      'killall 1234'
+      'Первый аргумент',
+      'Имя скрипта',
+      'Количество аргументов',
+      'Текущий PID'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что означает переменная $#?',
+    options: [
+      'Все аргументы',
+      'Первый аргумент',
+      'Количество аргументов',
+      'Код возврата'
     ],
     correct: 2
   },
   {
-    category: 'practice',
-    question: 'Как посмотреть все процессы отсортированные по использованию CPU?',
+    category: 'theory',
+    question: 'Что означает переменная $??',
     options: [
-      'ps aux --sort=-cpu',
-      'top -o %CPU',
-      'ps -e --sort=cpu',
-      'ps aux | sort -k3'
+      'Количество аргументов',
+      'Код возврата последней команды',
+      'PID процесса',
+      'Текущая директория'
     ],
-    correct: 0
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Переменная в bash - это...',
+    options: [
+      'Название скрипта',
+      'Объект, хранящий значение (строку, число), которое можно использовать в скрипте',
+      'Тип файла',
+      'Аргумент команды'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Параметр скрипта ($1, $2 и т.д.) - это...',
+    options: [
+      'Переменная окружения',
+      'Аргумент, переданный скрипту при его запуске',
+      'Переменная, установленная в конфигурации',
+      'Значение по умолчанию'
+    ],
+    correct: 1
   },
   {
     category: 'practice',
-    question: 'Как проверить синтаксис bash скрипта без его выполнения?',
+    question: 'Как проверить синтаксис bash скрипта?',
     options: [
       'bash -c script.sh',
       'bash -n script.sh',
@@ -542,291 +1065,170 @@ export const questions = [
   },
   {
     category: 'practice',
-    question: 'Как размонтировать файловую систему?',
+    question: 'Как запустить скрипт с отладкой?',
     options: [
-      'unmount /mnt/data',
-      'umount /mnt/data',
-      'dismount /mnt/data',
-      'mount -u /mnt/data'
+      'bash script.sh',
+      'bash -n script.sh',
+      'bash -x script.sh',
+      'bash --debug script.sh'
+    ],
+    correct: 2
+  },
+
+  
+  {
+    category: 'theory',
+    question: 'Что такое systemd?',
+    options: [
+      'Файловая система',
+      'Менеджер систем и служб',
+      'Командная оболочка',
+      'Загрузчик ОС'
     ],
     correct: 1
   },
-  // Additional theory questions
   {
-    category: 'theory',
-    question: 'Какое состояние процесса обозначается буквой R в выводе ps?',
+    category: 'definition',
+    question: 'systemd - это...',
     options: [
-      'Running - процесс запущен и выполняется',
-      'Ready - процесс готов к запуску',
-      'Restart - процесс перезапускается',
-      'Remove - процесс удаляется'
-    ],
-    correct: 0
-  },
-  {
-    category: 'theory',
-    question: 'Что означает колонка VSZ в выводе ps aux?',
-    options: [
-      'Virtual Size - размер виртуальной памяти процесса в КБ',
-      'Variable Size - переменный размер',
-      'Version Size - размер версии',
-      'Visual Size - видимый размер'
-    ],
-    correct: 0
-  },
-  {
-    category: 'theory',
-    question: 'Зачем нужен пакетный менеджер?',
-    options: [
-      'Только для установки программ',
-      'Для автоматического разрешения зависимостей и управления пакетами',
-      'Только для удаления программ',
-      'Для компиляции исходного кода'
+      'Текстовый редактор',
+      'Система инициализации и менеджер сервисов/демонов Linux',
+      'Пакетный менеджер',
+      'Файловая система'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Что такое UEFI?',
+    question: 'Какой PID у systemd?',
     options: [
-      'Unified Extensible Firmware Interface - расширяемый интерфейс прошивки',
-      'Universal Extended File Interface',
-      'Unified Error Fixing Interface',
-      'Universal Executable Format Interface'
-    ],
-    correct: 0
-  },
-  {
-    category: 'theory',
-    question: 'Максимальный размер диска для MBR?',
-    options: [
-      '1 ТБ',
-      '2,2 ТБ',
-      '4 ТБ',
-      '8 ТБ'
+      '0',
+      '1',
+      '2',
+      '10'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Что такое точка монтирования?',
+    question: 'Что такое unit в systemd?',
     options: [
-      'Программа для монтирования',
-      'Директория, к которой присоединяется файловая система',
-      'Устройство для монтирования',
-      'Команда монтирования'
+      'Папка с конфигом',
+      'Одна служба или сервис',
+      'Номер процесса',
+      'Название ОС'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Unit в systemd - это...',
+    options: [
+      'Единица памяти',
+      'Конфигурационный файл, описывающий сервис, таргет, таймер или другую управляемую systemd единицу',
+      'Команда для управления сервисами',
+      'Тип прав доступа'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Какой файл содержит информацию о пользователях в Linux?',
+    question: 'Какой тип unit используется для запуска сервиса?',
     options: [
-      '/etc/users',
-      '/etc/passwd',
-      '/etc/userlist',
-      '/etc/accounts'
+      '.target',
+      '.service',
+      '.socket',
+      '.timer'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Service unit в systemd - это...',
+    options: [
+      'Набор инструментов',
+      'Unit, описывающий сервис (программу, которая должна запуститься и работать)',
+      'Группа пользователей',
+      'Тип файловой системы'
     ],
     correct: 1
   },
   {
     category: 'theory',
-    question: 'Что означает sticky bit на директории?',
+    question: 'Что такое target в systemd?',
     options: [
-      'Директория защищена от удаления',
-      'Только владелец файла может удалить его в этой директории',
-      'Директория доступна только для чтения',
-      'Директория автоматически монтируется'
+      'Один сервис',
+      'Группа сервисов',
+      'Конфигурационный файл',
+      'Тип устройства'
     ],
     correct: 1
   },
   {
-    category: 'theory',
-    question: 'Что означает символ | (pipe) в командной строке?',
+    category: 'definition',
+    question: 'Target в systemd - это...',
     options: [
-      'Логическое ИЛИ',
-      'Перенаправление stdout одной команды в stdin другой',
-      'Параллельное выполнение команд',
-      'Комментарий'
+      'Папка назначения',
+      'Специальный unit, группирующий другие units для достижения определённого состояния системы',
+      'Программа для установки',
+      'Файл конфигурации'
     ],
     correct: 1
   },
   {
-    category: 'theory',
-    question: 'Какая команда показывает дерево процессов?',
+    category: 'definition',
+    question: 'journalctl - это...',
     options: [
-      'ps tree',
-      'pstree',
-      'top -tree',
-      'process --tree'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что делает команда fork() в Linux?',
-    options: [
-      'Завершает процесс',
-      'Создает копию процесса',
-      'Запускает новую программу',
-      'Изменяет приоритет процесса'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какая клавиша в top сортирует процессы по памяти?',
-    options: [
-      'P',
-      'M',
-      'C',
-      'S'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что означает операция && между командами?',
-    options: [
-      'Выполнить обе команды параллельно',
-      'Выполнить вторую только если первая успешна',
-      'Выполнить только одну из команд',
-      'Объединить вывод команд'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Какой target в systemd соответствует графическому режиму?',
-    options: [
-      'multi-user.target',
-      'graphical.target',
-      'desktop.target',
-      'gui.target'
-    ],
-    correct: 1
-  },
-  {
-    category: 'theory',
-    question: 'Что означает код возврата 0 в bash скрипте?',
-    options: [
-      'Ошибка',
-      'Успешное выполнение',
-      'Предупреждение',
-      'Прерывание'
-    ],
-    correct: 1
-  },
-  // Additional practice questions
-  {
-    category: 'practice',
-    question: 'Как посмотреть только процессы пользователя user1?',
-    options: [
-      'ps -u user1',
-      'ps user1',
-      'top user1',
-      'ps --user=user1'
-    ],
-    correct: 0
-  },
-  {
-    category: 'practice',
-    question: 'Как найти все файлы в директории, измененные за последние 24 часа?',
-    options: [
-      'ls -lt',
-      'find . -mtime -1',
-      'find . -time 24',
-      'ls --modified'
+      'Команда для управления дисками',
+      'Команда для просмотра логов systemd (логов системных сервисов)',
+      'Команда для установки пакетов',
+      'Команда для управления пользователями'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как посмотреть только ошибки в логах systemd?',
+    question: 'Как запустить сервис nginx?',
     options: [
-      'journalctl -e',
-      'journalctl --errors',
-      'journalctl -p err',
-      'journalctl --level=error'
+      'systemctl nginx start',
+      'service nginx start',
+      'sudo systemctl start nginx',
+      'start nginx'
     ],
     correct: 2
   },
   {
     category: 'practice',
-    question: 'Как проверить, смонтирована ли файловая система?',
+    question: 'Как проверить статус сервиса?',
     options: [
-      'check mount',
-      'mount | grep /dev/sdb1',
-      'ls /mnt',
-      'test mount'
+      'systemctl nginx',
+      'systemctl status nginx',
+      'systemctl info nginx',
+      'systemctl show nginx'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как добавить текст в конец файла без его открытия?',
+    question: 'Как включить автозапуск сервиса?',
     options: [
-      'echo "text" > file.txt',
-      'echo "text" >> file.txt',
-      'cat "text" > file.txt',
-      'add "text" file.txt'
+      'systemctl autostart nginx',
+      'systemctl enable nginx',
+      'systemctl boot nginx',
+      'systemctl run nginx'
     ],
     correct: 1
   },
   {
     category: 'practice',
-    question: 'Как посмотреть размер директории /var/log?',
+    question: 'Как посмотреть логи systemd?',
     options: [
-      'ls -l /var/log',
-      'size /var/log',
-      'du -sh /var/log',
-      'df /var/log'
+      'journalctl',
+      'journalctl -f',
+      'journalctl -u service',
+      'Все перечисленные'
     ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как перезагрузить systemd после изменения unit файла?',
-    options: [
-      'systemctl reload',
-      'systemctl daemon-reload',
-      'systemctl restart',
-      'systemctl update'
-    ],
-    correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как установить пакет из локального .deb файла?',
-    options: [
-      'apt install package.deb',
-      'dpkg -i package.deb',
-      'deb install package.deb',
-      'apt-get package.deb'
-    ],
-    correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как посмотреть список всех установленных пакетов в Debian/Ubuntu?',
-    options: [
-      'apt list',
-      'apt list --installed',
-      'dpkg -l',
-      'apt show all'
-    ],
-    correct: 2
-  },
-  {
-    category: 'practice',
-    question: 'Как узнать, какой пакет предоставляет команду ls?',
-    options: [
-      'which ls',
-      'apt find ls',
-      'dpkg -S $(which ls)',
-      'locate ls'
-    ],
-    correct: 2
+    correct: 3
   },
   {
     category: 'practice',
@@ -839,420 +1241,241 @@ export const questions = [
     ],
     correct: 1
   },
+  
   {
-    category: 'practice',
-    question: 'Как сделать резервную копию файла перед редактированием?',
+    category: 'definition',
+    question: 'BIOS - это...',
     options: [
-      'cp file.txt file.txt.bak',
-      'backup file.txt',
-      'save file.txt',
-      'copy file.txt'
-    ],
-    correct: 0
-  },
-  {
-    category: 'practice',
-    question: 'Как найти все файлы больше 100MB в /home?',
-    options: [
-      'find /home -size 100M',
-      'find /home -size +100M',
-      'ls -l /home | grep 100M',
-      'du /home --min=100M'
-    ],
-    correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как изменить пароль пользователя user1?',
-    options: [
-      'password user1',
-      'passwd user1',
-      'usermod --password user1',
-      'setpass user1'
-    ],
-    correct: 1
-  },
-  {
-    category: 'practice',
-    question: 'Как посмотреть использование дисков в человекочитаемом формате?',
-    options: [
-      'df',
-      'df -h',
-      'disk',
-      'du -h'
-    ],
-    correct: 1
-  },
-  // Basic Linux commands questions
-  {
-    category: 'commands',
-    topic: 1,
-    question: 'Какая команда выводит текущую директорию?',
-    options: [
-      'pwd',
-      'cd',
-      'dir',
-      'whereami'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 1,
-    question: 'Какая команда создает новую директорию?',
-    options: [
-      'makedir',
-      'mkdir',
-      'createdir',
-      'newdir'
-    ],
-    correct: 1
-  },
-  {
-    category: 'commands',
-    topic: 1,
-    question: 'Как скопировать файл file1.txt в file2.txt?',
-    options: [
-      'copy file1.txt file2.txt',
-      'cp file1.txt file2.txt',
-      'mv file1.txt file2.txt',
-      'duplicate file1.txt file2.txt'
-    ],
-    correct: 1
-  },
-  {
-    category: 'commands',
-    topic: 1,
-    question: 'Как переименовать или переместить файл?',
-    options: [
-      'rename',
-      'move',
-      'mv',
-      'rn'
+      'Операционная система',
+      'Программа для работы с файлами',
+      'Программа, встроенная в материнскую плату, которая инициализирует оборудование при загрузке',
+      'Тип процессора'
     ],
     correct: 2
   },
   {
-    category: 'commands',
-    topic: 1,
-    question: 'Как удалить пустую директорию?',
+    category: 'definition',
+    question: 'Bootloader (загрузчик) - это...',
     options: [
-      'rm directory',
-      'rmdir directory',
-      'delete directory',
-      'remove directory'
+      'Пакет операционной системы',
+      'Программа, которая загружает и запускает ядро Linux с параметрами загрузки',
+      'Команда для управления сервисами',
+      'Тип файловой системы'
     ],
     correct: 1
   },
   {
-    category: 'commands',
-    topic: 2,
-    question: 'Как вывести содержимое файла на экран?',
+    category: 'definition',
+    question: 'GRUB - это...',
     options: [
-      'show file.txt',
-      'print file.txt',
-      'cat file.txt',
-      'view file.txt'
+      'Тип раздела диска',
+      'Популярный загрузчик для Linux систем',
+      'Команда для управления процессами',
+      'Конфигурационный файл'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Что происходит первым при загрузке?',
+    options: [
+      'Запускается init',
+      'BIOS инициализирует оборудование',
+      'Ядро загружается',
+      'Монтируется root ФС'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Kernel (ядро Linux) - это...',
+    options: [
+      'Первая запущенная программа',
+      'Основная часть операционной системы, управляющая ресурсами и взаимодействием с оборудованием',
+      'Пакет с драйверами',
+      'Файловая система'
+    ],
+    correct: 1
+  },
+  {
+    category: 'theory',
+    question: 'Какой процесс запускается после ядра?',
+    options: [
+      'systemd/init',
+      'bash',
+      'network',
+      'login'
+    ],
+    correct: 0
+  },
+  {
+    category: 'definition',
+    question: 'init/systemd процесс - это...',
+    options: [
+      'Процесс инициализации дисков',
+      'Первый процесс, запущенный ядром (PID 1), который запускает все остальные сервисы и процессы',
+      'Процесс для загрузки программ',
+      'Процесс резервного копирования'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как посмотреть логи текущей загрузки?',
+    options: [
+      'journalctl',
+      'journalctl -k',
+      'journalctl -b',
+      'б и в'
+    ],
+    correct: 3
+  },
+  
+  {
+    category: 'definition',
+    question: 'cron - это...',
+    options: [
+      'Команда для просмотра времени',
+      'Демон (фоновый процесс), который запускает команды/скрипты по расписанию',
+      'Файл конфигурации времени',
+      'Тип сервиса systemd'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'crontab - это...',
+    options: [
+      'Таблица времени системы',
+      'Файл, содержащий расписание задач для запуска по времени для конкретного пользователя',
+      'Команда для проверки времени',
+      'Список активных процессов'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Задача cron - это...',
+    options: [
+      'Ошибка в системе',
+      'Запись в crontab, содержащая расписание и команду для автоматического выполнения',
+      'Процесс, который запускается только один раз',
+      'Файл для резервной копии'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как добавить задачу в crontab?',
+    options: [
+      'cron -e',
+      'crontab -e',
+      'add cron',
+      'cron add'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как показать задачи в crontab?',
+    options: [
+      'crontab -l',
+      'crontab -show',
+      'crontab -list',
+      'show crontab'
+    ],
+    correct: 0
+  },
+  {
+    category: 'practice',
+    question: 'Как запустить скрипт ежедневно в 2:00?',
+    options: [
+      '2 0 * * * script.sh',
+      '0 2 * * * script.sh',
+      '* 2 * * * script.sh',
+      '0 0 2 * * script.sh'
+    ],
+    correct: 1
+  },
+  {
+    category: 'practice',
+    question: 'Как запустить скрипт при каждой загрузке?',
+    options: [
+      '0 0 * * * script.sh',
+      '@hourly script.sh',
+      '@reboot script.sh',
+      '@startup script.sh'
     ],
     correct: 2
   },
+
+  // ========================
+  // ОБЩИЕ КОНЦЕПЦИИ
+  // ========================
+  
   {
-    category: 'commands',
-    topic: 2,
-    question: 'Как вывести первые 10 строк файла?',
+    category: 'definition',
+    question: 'Демон (daemon) - это...',
     options: [
-      'head file.txt',
-      'top file.txt',
-      'first file.txt',
-      'cat -10 file.txt'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 2,
-    question: 'Как вывести последние 20 строк файла?',
-    options: [
-      'tail -20 file.txt',
-      'last -20 file.txt',
-      'end -20 file.txt',
-      'bottom -20 file.txt'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 2,
-    question: 'Какая команда позволяет просмотреть файл постранично?',
-    options: [
-      'more',
-      'less',
-      'page',
-      'Все перечисленные'
-    ],
-    correct: 3
-  },
-  {
-    category: 'commands',
-    topic: 3,
-    question: 'Как найти все файлы .txt в текущей директории и поддиректориях?',
-    options: [
-      'find . -name "*.txt"',
-      'search *.txt',
-      'locate *.txt',
-      'grep *.txt'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 3,
-    question: 'Как найти строку "error" в файле log.txt?',
-    options: [
-      'find "error" log.txt',
-      'search "error" log.txt',
-      'grep "error" log.txt',
-      'locate "error" log.txt'
-    ],
-    correct: 2
-  },
-  {
-    category: 'commands',
-    topic: 3,
-    question: 'Как найти все файлы, измененные за последние 7 дней?',
-    options: [
-      'find . -mtime -7',
-      'find . -time 7',
-      'locate -days 7',
-      'search -modified 7'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 4,
-    question: 'Как создать архив .tar.gz?',
-    options: [
-      'tar -czf archive.tar.gz files/',
-      'zip archive.tar.gz files/',
-      'gzip files/',
-      'compress files/'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 4,
-    question: 'Как распаковать архив .tar.gz?',
-    options: [
-      'tar -xzf archive.tar.gz',
-      'untar archive.tar.gz',
-      'unzip archive.tar.gz',
-      'extract archive.tar.gz'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 4,
-    question: 'Как посмотреть содержимое .tar архива без распаковки?',
-    options: [
-      'tar -tf archive.tar',
-      'tar -list archive.tar',
-      'tar -show archive.tar',
-      'tar -view archive.tar'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 5,
-    question: 'Как скачать файл по URL?',
-    options: [
-      'download http://example.com/file',
-      'get http://example.com/file',
-      'wget http://example.com/file',
-      'fetch http://example.com/file'
-    ],
-    correct: 2
-  },
-  {
-    category: 'commands',
-    topic: 5,
-    question: 'Как проверить доступность хоста?',
-    options: [
-      'ping host',
-      'check host',
-      'test host',
-      'connect host'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 5,
-    question: 'Как подключиться по SSH?',
-    options: [
-      'connect user@host',
-      'ssh user@host',
-      'login user@host',
-      'remote user@host'
+      'Вредоносная программа',
+      'Фоновый процесс, работающий без взаимодействия с пользователем',
+      'Процесс с очень высоким приоритетом',
+      'Процесс, который выполняется один раз в день'
     ],
     correct: 1
   },
   {
-    category: 'commands',
-    topic: 6,
-    question: 'Как посмотреть справку по команде ls?',
+    category: 'definition',
+    question: 'Интерпретатор команд (shell) - это...',
     options: [
-      'help ls',
-      'man ls',
-      'info ls',
-      'Все перечисленные'
-    ],
-    correct: 3
-  },
-  {
-    category: 'commands',
-    topic: 6,
-    question: 'Как узнать полный путь к исполняемому файлу команды?',
-    options: [
-      'where command',
-      'which command',
-      'locate command',
-      'find command'
+      'Тип файла',
+      'Программа, которая читает и выполняет команды, введённые пользователем или из скрипта',
+      'Команда для просмотра файлов',
+      'Тип процессора'
     ],
     correct: 1
   },
   {
-    category: 'commands',
-    topic: 7,
-    question: 'Как посмотреть переменные окружения?',
+    category: 'definition',
+    question: 'Привилегии (permissions) - это...',
     options: [
-      'env',
-      'printenv',
-      'echo $PATH',
-      'Все перечисленные'
-    ],
-    correct: 3
-  },
-  {
-    category: 'commands',
-    topic: 7,
-    question: 'Как установить переменную окружения на текущую сессию?',
-    options: [
-      'set VAR=value',
-      'export VAR=value',
-      'VAR=value',
-      'setenv VAR value'
+      'Пароли для входа',
+      'Разрешения для выполнения определённых действий с файлами или командами',
+      'Типы пользователей',
+      'Версии программ'
     ],
     correct: 1
   },
   {
-    category: 'commands',
-    topic: 8,
-    question: 'Как посмотреть историю команд?',
+    category: 'definition',
+    question: 'Архив - это...',
     options: [
-      'history',
-      'commands',
-      'log',
-      'past'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 8,
-    question: 'Как выполнить команду из истории по номеру (например, 42)?',
-    options: [
-      '!42',
-      '#42',
-      'exec 42',
-      'run 42'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 9,
-    question: 'Как посмотреть кто сейчас в системе?',
-    options: [
-      'users',
-      'who',
-      'w',
-      'Все перечисленные'
-    ],
-    correct: 3
-  },
-  {
-    category: 'commands',
-    topic: 9,
-    question: 'Как узнать имя текущего пользователя?',
-    options: [
-      'whoami',
-      'me',
-      'user',
-      'myname'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 10,
-    question: 'Как создать символическую ссылку?',
-    options: [
-      'ln -s target link',
-      'link target link',
-      'symlink target link',
-      'mklink target link'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 10,
-    question: 'Как посмотреть размер файла?',
-    options: [
-      'size file',
-      'ls -lh file',
-      'du -h file',
-      'Оба b и c'
-    ],
-    correct: 3
-  },
-  {
-    category: 'commands',
-    topic: 10,
-    question: 'Как подсчитать количество строк в файле?',
-    options: [
-      'wc -l file',
-      'count file',
-      'lines file',
-      'nl file'
-    ],
-    correct: 0
-  },
-  {
-    category: 'commands',
-    topic: 10,
-    question: 'Как отсортировать строки файла?',
-    options: [
-      'order file',
-      'sort file',
-      'arrange file',
-      'organize file'
+      'Папка на сервере',
+      'Сжатый или несжатый файл, содержащий один или несколько файлов и директорий',
+      'Резервная копия всей системы',
+      'Тип файловой системы'
     ],
     correct: 1
   },
   {
-    category: 'commands',
-    topic: 10,
-    question: 'Как удалить дубликаты из отсортированного файла?',
+    category: 'definition',
+    question: 'Конфигурационный файл - это...',
     options: [
-      'unique file',
-      'uniq file',
-      'dedup file',
-      'nodups file'
+      'Исполняемая программа',
+      'Текстовый файл, содержащий параметры и настройки для программы или системы',
+      'Резервная копия данных',
+      'Архив с документацией'
+    ],
+    correct: 1
+  },
+  {
+    category: 'definition',
+    question: 'Права доступа в Linux - это...',
+    options: [
+      'Пароли для файлов',
+      'Система, определяющая кто может читать, писать или выполнять файлы и директории',
+      'Имена пользователей с доступом к файлу',
+      'Теги для классификации файлов'
     ],
     correct: 1
   }
