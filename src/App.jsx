@@ -10,8 +10,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Коллоквиум по тулзам</h1>
-        <p>Подготовка к экзамену по системному администрированию Linux</p>
+        <h1>Подготовка к коллоквиуму по Инструментам разработчика</h1>
       </header>
 
       <nav className="app-nav">
