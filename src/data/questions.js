@@ -105,7 +105,7 @@ export const allQuestions = [
       'ps',
       'ps aux',
       'top',
-      'б и в'
+      '2 и 3'
     ],
     correct: 3
   },
@@ -149,7 +149,7 @@ export const allQuestions = [
       'kill -9 12345',
       'kill -15 12345',
       'kill 12345',
-      'б и в'
+      '2 и 3'
     ],
     correct: 3
   },
@@ -914,7 +914,7 @@ export const allQuestions = [
       'command < file.txt',
       'command > file.txt',
       'command >> file.txt',
-      'б и в'
+      '2 и 3'
     ],
     correct: 3
   },
@@ -936,7 +936,7 @@ export const allQuestions = [
       'command > file.txt',
       'command 2>&1 > file.txt',
       'command &> file.txt',
-      'б и в'
+      '2 и 3'
     ],
     correct: 3
   },
@@ -1326,7 +1326,7 @@ export const allQuestions = [
       'journalctl',
       'journalctl -k',
       'journalctl -b',
-      'б и в'
+      '2 и 3'
     ],
     correct: 3
   },

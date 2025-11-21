@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import { allQuestions } from '../data/questions';
-import { theoryTopics } from '../data/topics';
 
 export default function Quiz() {
   const [quizState, setQuizState] = useState('setup'); // setup, active, results
-  const [quizMode, setQuizMode] = useState('normal'); // normal or exam
+  const [quizMode, setQuizMode] = useState('normal'); // normal or marathon
   const [settings, setSettings] = useState({
     category: 'all',
     questionCount: 10
   });
-  const [selectedTickets, setSelectedTickets] = useState([]);
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [answerRevealed, setAnswerRevealed] = useState(false);
 
   const startQuiz = () => {
     let filtered = allQuestions;
@@ -29,46 +28,46 @@ export default function Quiz() {
     setUserAnswers(new Array(selected.length).fill(null));
     setCurrentIndex(0);
     setSelectedAnswer(null);
+    setAnswerRevealed(false);
     setQuizMode('normal');
     setQuizState('active');
   };
 
-  const startExam = () => {
-    // Randomly select 2 tickets (topics) from 1 to 10
-    const allTickets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const shuffled = [...allTickets].sort(() => Math.random() - 0.5);
-    const tickets = shuffled.slice(0, 2).sort((a, b) => a - b);
+  const startMarathon = () => {
+    // Use ALL questions in random order
+    const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
 
-    setSelectedTickets(tickets);
-
-    // Get questions only from selected tickets
-    const filtered = allQuestions.filter(q =>
-      q.topic && tickets.includes(q.topic)
-    );
-
-    // Shuffle and take all questions from these tickets (or limit to questionCount)
-    const shuffledQuestions = [...filtered].sort(() => Math.random() - 0.5);
-    const selected = shuffledQuestions.slice(0, Math.min(20, shuffledQuestions.length));
-
-    setCurrentQuestions(selected);
-    setUserAnswers(new Array(selected.length).fill(null));
+    setCurrentQuestions(shuffledQuestions);
+    setUserAnswers(new Array(shuffledQuestions.length).fill(null));
     setCurrentIndex(0);
     setSelectedAnswer(null);
-    setQuizMode('exam');
+    setAnswerRevealed(false);
+    setQuizMode('marathon');
     setQuizState('active');
   };
 
   const selectAnswer = (index) => {
+    // In marathon mode, don't allow changing answer after it's revealed
+    if (quizMode === 'marathon' && answerRevealed) {
+      return;
+    }
+
     setSelectedAnswer(index);
     const newAnswers = [...userAnswers];
     newAnswers[currentIndex] = index;
     setUserAnswers(newAnswers);
+
+    // In marathon mode, reveal answer immediately
+    if (quizMode === 'marathon') {
+      setAnswerRevealed(true);
+    }
   };
 
   const nextQuestion = () => {
     if (currentIndex < currentQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setSelectedAnswer(userAnswers[currentIndex + 1]);
+      setAnswerRevealed(false);
     }
   };
 
@@ -76,6 +75,7 @@ export default function Quiz() {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
       setSelectedAnswer(userAnswers[currentIndex - 1]);
+      setAnswerRevealed(false);
     }
   };
 
@@ -89,7 +89,7 @@ export default function Quiz() {
     setCurrentIndex(0);
     setUserAnswers([]);
     setSelectedAnswer(null);
-    setSelectedTickets([]);
+    setAnswerRevealed(false);
   };
 
   // Setup screen
@@ -130,22 +130,22 @@ export default function Quiz() {
           </button>
         </div>
 
-        <div className="quiz-settings" style={{ marginTop: '30px', background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
-          <h2 style={{ color: 'white' }}>🎓 Режим экзамена</h2>
+        <div className="quiz-settings" style={{ marginTop: '30px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+          <h2 style={{ color: 'white' }}>🏃 Марафон</h2>
           <p style={{ color: 'white', marginBottom: '20px' }}>
-            Будут случайно выбраны 2 билета из 10. Вопросы только из этих билетов!
+            Все {allQuestions.length} вопросов в случайном порядке. Проверьте свои знания полностью!
           </p>
           <button
             className="btn-large"
-            onClick={startExam}
+            onClick={startMarathon}
             style={{
               background: 'white',
-              color: '#f5576c',
+              color: '#764ba2',
               border: 'none',
               fontWeight: 'bold'
             }}
           >
-            Начать экзамен (2 случайных билета)
+            Начать марафон (все {allQuestions.length} вопросов)
           </button>
         </div>
 
@@ -153,21 +153,10 @@ export default function Quiz() {
           <h3>Как это работает:</h3>
           <ul>
             <li><strong>Обычный режим:</strong> выберите категорию и количество вопросов</li>
-            <li><strong>Режим экзамена:</strong> система случайно выберет 2 билета из 10, вопросы будут только по этим билетам</li>
+            <li><strong>Марафон:</strong> все {allQuestions.length} вопросов подряд для максимальной подготовки</li>
             <li>Отвечайте на вопросы, выбирая правильный вариант</li>
             <li>В конце получите результаты с разбором ошибок</li>
           </ul>
-        </div>
-
-        <div className="info-box" style={{ marginTop: '20px', background: '#f0f9ff', borderColor: '#3b82f6' }}>
-          <h3>📚 Билеты (темы):</h3>
-          <ol style={{ marginLeft: '20px', marginTop: '10px' }}>
-            {theoryTopics.map(topic => (
-              <li key={topic.id} style={{ margin: '8px 0' }}>
-                <strong>Билет {topic.id}:</strong> {topic.title}
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
     );
@@ -182,11 +171,11 @@ export default function Quiz() {
         <div className="quiz-header">
           <div>
             <h1>
-              {quizMode === 'exam' ? '🎓 Экзамен' : 'Тестирование'}
+              {quizMode === 'marathon' ? '🏃 Марафон' : 'Тестирование'}
             </h1>
-            {quizMode === 'exam' && selectedTickets.length > 0 && (
+            {quizMode === 'marathon' && (
               <p style={{ fontSize: '0.9em', marginTop: '8px', opacity: 0.9 }}>
-                Ваши билеты: <strong>#{selectedTickets[0]}</strong> и <strong>#{selectedTickets[1]}</strong>
+                Все вопросы подряд — проверьте свои знания!
               </p>
             )}
           </div>
@@ -201,16 +190,55 @@ export default function Quiz() {
           <h2 className="question-text">{question.question}</h2>
 
           <div className="options">
-            {question.options.map((option, index) => (
-              <div
-                key={index}
-                className={`option ${selectedAnswer === index ? 'selected' : ''}`}
-                onClick={() => selectAnswer(index)}
-              >
-                {option}
-              </div>
-            ))}
+            {question.options.map((option, index) => {
+              let optionClass = 'option';
+
+              // Add selected class
+              if (selectedAnswer === index) {
+                optionClass += ' selected';
+              }
+
+              // In marathon mode with revealed answer, show feedback
+              if (quizMode === 'marathon' && answerRevealed) {
+                if (index === question.correct) {
+                  optionClass += ' option-correct';
+                } else if (selectedAnswer === index) {
+                  optionClass += ' option-incorrect';
+                }
+              }
+
+              return (
+                <div
+                  key={index}
+                  className={optionClass}
+                  onClick={() => selectAnswer(index)}
+                >
+                  {option}
+                  {quizMode === 'marathon' && answerRevealed && index === question.correct && (
+                    <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>✓</span>
+                  )}
+                  {quizMode === 'marathon' && answerRevealed && selectedAnswer === index && index !== question.correct && (
+                    <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>✗</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
+          {quizMode === 'marathon' && answerRevealed && (
+            <div style={{
+              marginTop: '20px',
+              padding: '15px',
+              borderRadius: '8px',
+              background: selectedAnswer === question.correct ? '#d1fae5' : '#fee2e2',
+              border: `2px solid ${selectedAnswer === question.correct ? '#10b981' : '#ef4444'}`,
+              color: selectedAnswer === question.correct ? '#065f46' : '#991b1b'
+            }}>
+              <strong>
+                {selectedAnswer === question.correct ? '✓ Правильно!' : '✗ Неправильно'}
+              </strong>
+            </div>
+          )}
         </div>
 
         <div className="quiz-buttons">
@@ -270,16 +298,15 @@ export default function Quiz() {
     return (
       <div className="results-container">
         <h1>
-          {quizMode === 'exam' ? '🎓 Результаты экзамена' : 'Результаты тестирования'}
+          {quizMode === 'marathon' ? '🏃 Результаты марафона' : 'Результаты тестирования'}
         </h1>
 
-        {quizMode === 'exam' && selectedTickets.length > 0 && (
-          <div className="info-box" style={{ marginTop: '20px' }}>
-            <strong>Ваши билеты были:</strong>
-            <ul style={{ marginTop: '10px', marginLeft: '20px' }}>
-              <li>Билет #{selectedTickets[0]}: {theoryTopics[selectedTickets[0] - 1]?.title}</li>
-              <li>Билет #{selectedTickets[1]}: {theoryTopics[selectedTickets[1] - 1]?.title}</li>
-            </ul>
+        {quizMode === 'marathon' && (
+          <div className="info-box" style={{ marginTop: '20px', background: '#f3e8ff', borderColor: '#764ba2' }}>
+            <strong>🎉 Вы прошли марафон!</strong>
+            <p style={{ marginTop: '10px', marginBottom: 0 }}>
+              Ответили на все {currentQuestions.length} вопросов. Отличная работа!
+            </p>
           </div>
         )}
 
@@ -302,11 +329,6 @@ export default function Quiz() {
               <div key={index} className={`result-item ${isCorrect ? 'correct' : 'incorrect'}`}>
                 <div className="result-question">
                   <strong>Вопрос {index + 1}:</strong> {question.question}
-                  {question.topic && (
-                    <span style={{ marginLeft: '10px', opacity: 0.7, fontSize: '0.9em' }}>
-                      [Билет #{question.topic}]
-                    </span>
-                  )}
                 </div>
 
                 <div className="result-answer">
@@ -329,8 +351,8 @@ export default function Quiz() {
         </div>
 
         <div className="quiz-buttons">
-          <button className="btn-primary" onClick={quizMode === 'exam' ? startExam : startQuiz}>
-            {quizMode === 'exam' ? 'Новый экзамен (другие билеты)' : 'Пройти еще раз'}
+          <button className="btn-primary" onClick={quizMode === 'marathon' ? startMarathon : startQuiz}>
+            {quizMode === 'marathon' ? 'Новый марафон' : 'Пройти еще раз'}
           </button>
           <button className="btn-secondary" onClick={restartQuiz}>
             К настройкам

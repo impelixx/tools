@@ -411,6 +411,24 @@ body {
   border-color: var(--primary-color);
 }
 
+.option.option-correct {
+  background: #d1fae5;
+  border-color: var(--success-color);
+  color: #065f46;
+}
+
+.option.option-incorrect {
+  background: #fee2e2;
+  border-color: var(--error-color);
+  color: #991b1b;
+}
+
+.option.option-correct:hover,
+.option.option-incorrect:hover {
+  transform: none;
+  cursor: default;
+}
+
 /* Buttons */
 .quiz-buttons {
   display: flex;
