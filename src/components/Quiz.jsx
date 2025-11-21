@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { questions } from '../data/questions';
+import { allQuestions } from '../data/questions';
 import { theoryTopics } from '../data/topics';
 
 export default function Quiz() {
@@ -16,9 +16,9 @@ export default function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const startQuiz = () => {
-    let filtered = questions;
+    let filtered = allQuestions;
     if (settings.category !== 'all') {
-      filtered = questions.filter(q => q.category === settings.category);
+      filtered = allQuestions.filter(q => q.category === settings.category);
     }
 
     // Shuffle and select questions
@@ -42,7 +42,7 @@ export default function Quiz() {
     setSelectedTickets(tickets);
 
     // Get questions only from selected tickets
-    const filtered = questions.filter(q =>
+    const filtered = allQuestions.filter(q =>
       q.topic && tickets.includes(q.topic)
     );
 
