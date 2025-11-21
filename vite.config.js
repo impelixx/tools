@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react()],
   // Base path для GitHub Pages
   // Измените на название вашего репозитория
-  base: process.env.NODE_ENV === 'production' ? '/colloquium-app/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/tools/' : '/',
 })
