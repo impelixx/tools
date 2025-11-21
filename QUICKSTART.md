@@ -24,26 +24,27 @@ git branch -M main
 git push -u origin main
 ```
 
-## Шаг 3: Включите GitHub Pages
+## Шаг 3: Дождитесь деплоя
+
+После push в main автоматически запустится GitHub Actions workflow, который:
+1. Соберет проект
+2. Создаст ветку `gh-pages` (если её нет)
+3. Запушит туда результаты сборки
+
+## Шаг 4: Настройте GitHub Pages
+
+**ВАЖНО:** После того как workflow завершится (проверьте вкладку **Actions**):
 
 1. Откройте ваш репозиторий на GitHub
-2. Перейдите в **Settings** → **Pages** (в меню слева)
+2. Перейдите в **Settings** → **Pages**
 3. В разделе **Build and deployment**:
-   - Source: выберите **GitHub Actions**
-4. Сохраните
-
-## Шаг 4: Запустите деплой
-
-**Автоматически:** Деплой уже запустился при push!
-
-**Вручную:**
-1. Перейдите на вкладку **Actions**
-2. Выберите workflow **Deploy to GitHub Pages**
-3. Нажмите **Run workflow** → **Run workflow**
+   - Source: выберите **Deploy from a branch**
+   - Branch: выберите **gh-pages** и папку **/ (root)**
+4. Нажмите **Save**
 
 ## Шаг 5: Откройте приложение
 
-Через 2-3 минуты приложение будет доступно:
+Через 1-2 минуты приложение будет доступно:
 
 ```
 https://YOUR_USERNAME.github.io/colloquium-app/
@@ -80,7 +81,7 @@ git commit -m "Update content"
 git push
 ```
 
-Деплой произойдет автоматически!
+Деплой произойдет автоматически! Workflow соберет проект и запушит в ветку `gh-pages`.
 
 ---
 
@@ -89,13 +90,15 @@ git push
 ### Белый экран после деплоя?
 - Проверьте `base` в `vite.config.js` - должен совпадать с именем репозитория
 - Откройте консоль браузера (F12) для ошибок
+- Убедитесь, что в Settings → Pages выбрана ветка **gh-pages**
 
 ### Workflow не запускается?
 - Settings → Actions → General → проверьте, что workflows включены
 
 ### 404 ошибка?
-- Убедитесь, что GitHub Pages настроен на **GitHub Actions**
-- Подождите 2-3 минуты после первого деплоя
+- Убедитесь, что GitHub Pages настроен на **Deploy from a branch: gh-pages**
+- Подождите 1-2 минуты после первого деплоя
+- Проверьте, что workflow успешно завершился в Actions
 
 ---
 
